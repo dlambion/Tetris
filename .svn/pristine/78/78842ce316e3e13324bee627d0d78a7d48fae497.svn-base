@@ -1,0 +1,103 @@
+/*
+ * TCSS 305 - Spring 2016
+ * Assignment 6 - Tetris - A
+ */
+
+package view;
+
+import java.awt.BorderLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
+/**
+ * 
+ * @author Danielle Lambion
+ * @version 24 May 2016
+ */
+public class TetrisGUI extends JFrame
+{
+    /** 
+     * The default delay (in milliseconds) for the timer. 
+     */
+    public static final int DEFAULT_DELAY = 10;
+
+    /**
+     * A generated serial version UID for object Serialization.
+     */
+    private static final long serialVersionUID = 106474944905625785L;
+    
+    /**
+     * The panel that displays the game board.
+     */
+    private final GamePanel myTetris;
+    
+    /**
+     * The panel that displays a preview of the next tetris piece.
+     */
+    private final PreviewPanel myPreview;
+    
+    /**
+     * The timer to move pieces during the game.
+     */
+//    private final Timer myTimer;
+    
+    /**
+     * Menu bar for buttons, such as, start, pause, and controls.
+     */
+    private final JMenuBar myMenu;
+
+    /**
+     * 
+     */
+    public TetrisGUI() 
+    {
+        super("TETRIS");
+        myMenu = new JMenuBar();
+        myTetris = new GamePanel();
+        myPreview = new PreviewPanel();
+        generateFrame();
+//        myTimer = new Timer(DEFAULT_DELAY);
+    }
+    
+    /**
+     * Generates and makes the GUI visible for Tetris.
+     */
+    public void start()
+    {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        
+        pack();
+//        setResizable(false);
+        setVisible(true);
+    }
+    
+    
+    /**
+     * Generates the frame with buttons and panels.
+     */
+    private void generateFrame()
+    {
+        final JButton ctrls = new JButton("Controls");
+        ctrls.addActionListener(theEvent ->
+        {
+            final String message = "Move Left: \u2190\nMoveRight: \u2192\nMove Down: \u2193\n"
+                            + "Rotate Clockwise: X\nRotate Counterclockwise: Z\n"
+                            + "Drop: Spacebar";
+//            final ImageIcon icon = new ImageIcon(getClass().getResource
+//                                                 ("/images/icon_washington3.gif"));
+            JOptionPane.showMessageDialog(new JFrame(), message, "Controls", 
+                                          JOptionPane.INFORMATION_MESSAGE);
+        });
+        myMenu.add(ctrls);
+        setJMenuBar(myMenu);
+        add(myPreview, BorderLayout.EAST);
+        add(myTetris, BorderLayout.CENTER);
+    }
+
+}

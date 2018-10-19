@@ -1,0 +1,61 @@
+/*
+ * TCSS 305 - Spring 2016
+ * Assignment 6 - Tetris - A
+ */
+
+package view;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+
+/**
+ * 
+ * @author Danielle Lambion
+ * @version 24 May 2016
+ */
+public class TetrisGUI extends JFrame
+{
+
+    /**
+     * A generated serial version UID for object Serialization.
+     */
+    private static final long serialVersionUID = 106474944905625785L;
+    
+    /**
+     * The panel that displays the game board.
+     */
+    private final GamePanel myTetris;
+    
+    /**
+     * The panel that displays a preview of the next tetris piece.
+     */
+    private final PreviewPanel myPreview;
+
+    /**
+     * 
+     */
+    public TetrisGUI() 
+    {
+        super("TETRIS");
+        myTetris = new GamePanel();
+        myPreview = new PreviewPanel();
+    }
+    
+    /**
+     * Generates and makes the GUI visible for Tetris.
+     */
+    public void start()
+    {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        add(myPreview, BorderLayout.EAST);
+        add(myTetris, BorderLayout.CENTER);
+        
+        pack();
+        setResizable(false);
+        setVisible(true);
+    }
+
+}

@@ -1,0 +1,82 @@
+/*
+ * TCSS 305 - Spring 2016
+ * Assignment 6 - Tetris - A
+ */
+
+package view;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JPanel;
+
+import model.Board;
+
+/**
+ * 
+ * @author Danielle Lambion
+ * @version 24 May 2016
+ */
+public class GamePanel extends JPanel implements Observer 
+{
+
+    /**
+     * A generated serial version UID for object Serialization.
+     */
+    private static final long serialVersionUID = -996104457414022004L;
+    
+    /**
+     * The Tetris game board.
+     */
+//    private final Board myBoard;
+    
+    private List<TetrisBlock> myBlockPoints;
+
+    /**
+     * Constructor for the playable game panel.
+     */
+    public GamePanel(List<TetrisBlock> theList) 
+    {
+        super();
+        setPreferredSize(new Dimension(250, 500));
+        setBackground(Color.WHITE);
+        myBlockPoints = theList;
+    }
+
+    /* (non-Javadoc)
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
+    @Override
+    public void update(final Observable theBoard, final Object theArg) 
+    {
+        // TODO Auto-generated method stub
+
+    }
+    
+    @Override
+    public void paintComponent(final Graphics theGraphic)
+    {
+        super.paintComponent(theGraphic);
+        final Graphics2D graphic = (Graphics2D) theGraphic;
+        for (int i = 0; i < myBlockPoints.size(); i++)
+        {
+            graphic.setColor(Color.GRAY);
+            graphic.fillRect(myBlockPoints.get(i).getX(), myBlockPoints.get(i).getY(), 20, 20);
+            graphic.setColor(Color.BLACK);
+            graphic.drawRect(myBlockPoints.get(i).getX(), myBlockPoints.get(i).getY(), 20, 20);
+        }
+        repaint();
+    }
+    
+    public void updatePoints(List<TetrisBlock> theBlocks)
+    {
+        myBlockPoints = theBlocks;
+    }
+
+}

@@ -1,0 +1,44 @@
+/*
+ * TCSS 305 - Spring 2016
+ * Assignment 6 - Tetris - A
+ */
+
+package view;
+
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JPanel;
+
+/**
+ * 
+ * @author Danielle Lambion
+ * @version 24 May 2016
+ */
+public class PreviewPanel extends JPanel implements Observer 
+{
+
+    /**
+     * A generated serial version UID for object Serialization.
+     */
+    private static final long serialVersionUID = 3457243357781833162L;
+
+    /**
+     * 
+     */
+    public PreviewPanel() 
+    {
+        // TODO Auto-generated constructor stub
+    }
+
+    /* (non-Javadoc)
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
+    @Override
+    public void update(final Observable theBoard, final Object theArg) 
+    {
+        // TODO Auto-generated method stub
+
+    }
+
+}

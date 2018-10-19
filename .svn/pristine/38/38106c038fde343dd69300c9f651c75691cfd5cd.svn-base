@@ -1,0 +1,73 @@
+/*
+ * TCSS 305 - Spring 2016
+ * Assignment 6 - Tetris - A
+ */
+
+package view;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JPanel;
+
+/**
+ * 
+ * @author Danielle Lambion
+ * @version 24 May 2016
+ */
+public class PreviewPanel extends JPanel implements Observer 
+{
+    
+    private List<TetrisBlock> myPreviewPoints;
+
+    /**
+     * A generated serial version UID for object Serialization.
+     */
+    private static final long serialVersionUID = 3457243357781833162L;
+
+    /**
+     * 
+     */
+    public PreviewPanel() 
+    {
+        setBackground(Color.GRAY);
+        setPreferredSize(new Dimension(150, 150));
+//        myPreviewPoints = new ArrayList<TetrisB>
+    }
+
+    /* (non-Javadoc)
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
+    @Override
+    public void update(final Observable theBoard, final Object theArg) 
+    {
+        // TODO Auto-generated method stub
+
+    }
+    
+    public void updatePoints(List<TetrisBlock> theBlocks)
+    {
+        myPreviewPoints = theBlocks;
+    }
+    
+    @Override
+    public void paintComponent(final Graphics theGraphic)
+    {
+        super.paintComponent(theGraphic);
+        final Graphics2D graphic = (Graphics2D) theGraphic;
+        for (int i = 0; i < myPreviewPoints.size(); i++)
+        {
+            graphic.setColor(Color.WHITE);
+            graphic.fillRect(myPreviewPoints.get(i).getX(), myPreviewPoints.get(i).getY(), 20, 20);
+            graphic.setColor(Color.BLACK);
+            graphic.drawRect(myPreviewPoints.get(i).getX(), myPreviewPoints.get(i).getY(), 20, 20);
+        }        graphic.drawRect(5, 5, 140, 140);
+        repaint();
+    }
+
+}

@@ -1,0 +1,57 @@
+/**
+ * 
+ */
+package view;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import model.Board;
+
+/**
+ * @author Danielle Lambion
+ * @version 27 May 2016
+ */
+public class KeyboardActions extends KeyAdapter
+{
+    
+    private final Board myBoard;
+
+    /**
+     * 
+     */
+    public KeyboardActions(Board theBoard)
+    {
+        myBoard = theBoard;
+    }
+    
+    @Override
+    public void keyPressed(final KeyEvent theEvent)
+    {
+        if (theEvent.getKeyCode() == KeyEvent.VK_RIGHT)
+        {
+            myBoard.right();
+        }
+        else if (theEvent.getKeyCode() == KeyEvent.VK_LEFT)
+        {
+            myBoard.left();
+        }
+        else if (theEvent.getKeyCode() == KeyEvent.VK_DOWN)
+        {
+            myBoard.down();
+        }
+        else if (theEvent.getKeyCode() == KeyEvent.VK_SPACE)
+        {
+            myBoard.drop();
+        }
+        else if (theEvent.getKeyCode() == KeyEvent.VK_X)
+        {
+            myBoard.rotateCW();
+        }
+        else if (theEvent.getKeyCode() == KeyEvent.VK_Z)
+        {
+            myBoard.rotateCCW();
+        }
+    }
+
+}

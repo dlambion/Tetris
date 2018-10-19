@@ -1,0 +1,45 @@
+/*
+ * TCSS 305 - Spring 2016
+ * Assignment 6 - Tetris
+ */
+
+package view;
+
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JPanel;
+
+/**
+ * A panel displaying the player's score.
+ * 
+ * @author Danielle Lambion
+ * @version 24 May 2016
+ */
+public class ScorePanel extends JPanel implements Observer 
+{
+
+    /**
+     * A generated serial version UID for object Serialization.
+     */
+    private static final long serialVersionUID = 7790700994635768911L;
+
+    /**
+     * Constructor for Score Panel.
+     */
+    public ScorePanel() 
+    {
+        super();
+        //do stuff
+    }
+
+    /* (non-Javadoc)
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
+    @Override
+    public void update(final Observable theBoard, final Object theArg) 
+    {
+
+    }
+
+}
